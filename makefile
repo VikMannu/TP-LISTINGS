@@ -36,11 +36,16 @@ PROG2-5 = bin/capitulo_2/2.5/temp_file
 OBJ2-5 = obj/capitulo_2/2.5/temp_file.o
 SRC2-5 = src/capitulo_2/2.5/temp_file.c
 
+#2.6
+PROG2-6 = bin/capitulo_2/2.6/readfile
+OBJ2-6 = obj/capitulo_2/2.6/readfile.o
+SRC2-6 = src/capitulo_2/2.6/readfile.c
+
 
 
 #COMPILACIONES
 #make all
-all: $(PROG1) $(PROG2-1) $(PROG2-2) $(PROG2-3) $(PROG2-4)
+all: $(PROG1) $(PROG2-1) $(PROG2-2) $(PROG2-3) $(PROG2-4) $(PROG2-5) $(PROG2-6)
 
 #CAPITULO 1
 exec1:
@@ -107,6 +112,16 @@ $(OBJ2-5): $(SRC2-5)
 listing-2.5: $(SRC2-5)
 	g++ -c $(SRC2-5) -o $(OBJ2-5)
 
+#2.6
+exec2.6:
+	./$(PROG2-6) $(CFLAGS)
+$(PROG2-6): $(OBJ2-6)
+	g++ -o $(PROG2-6) $(OBJ2-6)
+$(OBJ2-6): $(SRC2-6)
+	g++ -c $(SRC2-6) -o $(OBJ2-6)
+listing-2.6: $(SRC2-6)
+	g++ -c $(SRC2-6) -o $(OBJ2-6)
+
 
 #CLEAN
 clean: clean-1 clean-2
@@ -116,7 +131,7 @@ clean-1:
 	rm -f $(PROG1) $(OBJS1)
 
 #clean-capitulo_2
-clean-2: clean-2.1 clean-2.2 clean-2.3 clean-2.4
+clean-2: clean-2.1 clean-2.2 clean-2.3 clean-2.4 clean-2.5 clean-2.6
 
 clean-2.1:
 	rm -f $(PROG2-1) $(OBJ2-1)
@@ -132,3 +147,6 @@ clean-2.4:
 
 clean-2.5:
 	rm -f $(PROG2-5) $(OBJ2-5)
+
+clean-2.6:
+	rm -f $(PROG2-6) $(OBJ2-6)

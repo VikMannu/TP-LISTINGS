@@ -1,7 +1,10 @@
 //Listing 2.5 (temp_file.c) Using mkstemp
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+
+#include <string.h>
 
 /* A handle for a temporary file created with write_temp_file. In
 this implementation, it’s just a file descriptor. */
@@ -83,4 +86,12 @@ char *read_temp_file(temp_file_handle temp_file, size_t *length)
     close(fd);
 
     return buffer;
+}
+
+int main (int argc, char *argv[]) {
+    char *buffer = argv[1];
+    size_t length = strlen(argv[1]);
+  
+    printf("El buffer es: %s", read_temp_file(write_temp_file(buffer, length), &length));
+    return 0;
 }
