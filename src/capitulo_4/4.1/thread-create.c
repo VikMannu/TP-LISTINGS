@@ -1,5 +1,6 @@
 //Listing 4.1 (thread-create.c) Create a Thread
-
+// Este ejemplo muestra como se crea un hilo, y como estos se intercalan en 
+//ejecución dando paso a cada uno
 #include <pthread.h>
 #include <stdio.h>
 /* Prints x’s to stderr. The parameter is unused. Does not return. */
