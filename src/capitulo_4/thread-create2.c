@@ -50,5 +50,6 @@ int main()
     thread2_args.character = 'o';
     thread2_args.count = 20000;
     pthread_create(&thread2_id, NULL, &char_print, &thread2_args);
+
     return 0;
 }

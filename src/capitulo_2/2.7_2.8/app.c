@@ -3,7 +3,7 @@
 
 int main()
 {
-    printf ("f:%d \n f2: %d", f(), f2());
+    printf ("f:%d", f());
 
     return 0;
 }

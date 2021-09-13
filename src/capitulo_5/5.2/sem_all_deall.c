@@ -4,6 +4,8 @@
 #include <sys/sem.h>
 #include <sys/types.h>
 
+#define KEY 0x1111
+
 /* We must define union semun ourselves. */
 /* Debemos definir union semun nosotros mismos. */
 union semun
@@ -29,4 +31,19 @@ int binary_semaphore_deallocate(int semid)
 {
     union semun ignored_argument;
     return semctl(semid, 1, IPC_RMID, ignored_argument);
+}
+
+int main (int argc, char *argv[]) {
+    printf("\nObtener un ID de semáforo binario, asignando si es necesario.");
+    int semid = binary_semaphore_allocation(KEY, IPC_CREAT);
+	
+	printf("\nValor de semid:%d", semid);
+	
+    printf("\nDesasignar un semáforo binario."
+           "\nTodos los usuarios deben haber terminado su uso. Devuelve -1 en caso de fallo.");
+	binary_semaphore_deallocate(semid);
+	
+	printf("\nSemaforo binario desalojado\n");
+	
+	return 0;
 }

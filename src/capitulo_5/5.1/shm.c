@@ -4,7 +4,7 @@
 #include <sys/shm.h>
 #include <sys/stat.h>
 
-int main()
+int main(int argc, char *argv[])
 {
     int segment_id;
     char *shared_memory;

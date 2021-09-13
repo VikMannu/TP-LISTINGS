@@ -24,10 +24,9 @@ int main(int argc, char *const argv[])
     close(fd);
     /* Read the integer, print it out, and double it. */
     /* Leer el entero, imprimirlo y duplicarlo. */
-    scanf(file_memory, “% d”, &integer);
-    printf(“value
-           : % d\n”, integer);
-    sprintf((char *)file_memory, “% d\n”, 2 * integer);
+    scanf(file_memory, "%d", &integer);
+    printf("value: %d\n", integer);
+    sprintf((char *)file_memory, "%d\n", 2 * integer);
     /* Release the memory (unnecessary because the program exits). */
     /* Liberar la memoria (innecesario porque el programa sale). */
     munmap(file_memory, FILE_LENGTH);
