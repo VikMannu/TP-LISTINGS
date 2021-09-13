@@ -17,10 +17,10 @@ int main ()
  /* Do some lengthy stuff here. */ 
  /* ... */
  int i =0;
- //profe no pude entender en el libro como es que debe enviar la señal al programa para que la funcion handler se dispare
- while(i<999999){
+ 
+ while(i<9999){
      i++;
-     signal(SIGUSR1,handler);
+     raise(SIGUSR1);
  }
  printf ("SIGUSR1 was raised %d times\n", sigusr1_count); 
  return 0; 
