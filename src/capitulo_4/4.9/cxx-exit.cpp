@@ -1,6 +1,7 @@
 //Listing 4.9 (cxx-exit.cpp) Implementing Safe Thread Exit with C++ Exceptions
 
 #include <pthread.h>
+#include <iostream>
 
 class ThreadExitException
 {
@@ -25,17 +26,33 @@ class ThreadExitException
         void *thread_return_value_;
 };
 
+
+//Funcion fibonacci para el trabajo a realizar
+int fibonacci(int n){
+    if(n==1){
+        return 1;
+    }else if(n==0){
+        return 0;
+    }else{
+        return fibonacci(n-1)+fibonacci(n-2);
+    }
+}
+//hacemos el trabajo
 void do_some_work()
 {
+    int j=1;
     while (1)
     {
         /* Do some useful things here... */
         /* Haz algunas cosas útiles aquí ... */
-        if (should_exit_thread_immediately())
+        int fibo=fibonacci(j);
+        std :: cout << "Fibonacci"<< j <<"=" << fibo << "\n";
+        if (j==10)
             throw ThreadExitException(/* thread’s return value = */ NULL);
+        j++;
     }
 }
-
+//funcion del hilo
 void *thread_function(void *)
 {
     try
@@ -49,4 +66,14 @@ void *thread_function(void *)
         ex.DoThreadExit();
     }
     return NULL;
+}
+
+//funcion main
+int main(){
+	pthread_t hilo;
+    //creamos el hilo
+	pthread_create(&hilo, NULL, &thread_function, NULL);
+    //hacemos el jpom
+	pthread_join(hilo, NULL);
+	return 0;
 }
