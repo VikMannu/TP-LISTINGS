@@ -1,5 +1,5 @@
 //Listing 5.2 (sem_all_deall.c) Allocating and Deallocating a Binary Semaphore
-
+#include <stdio.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #include <sys/types.h>
@@ -34,7 +34,7 @@ int binary_semaphore_deallocate(int semid)
 }
 
 int main (int argc, char *argv[]) {
-    printf("\nObtener un ID de semáforo binario, asignando si es necesario.");
+    printf("\n Obtener un ID de semáforo binario, asignando si es necesario.");
     int semid = binary_semaphore_allocation(KEY, IPC_CREAT);
 	
 	printf("\nValor de semid:%d", semid);

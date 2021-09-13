@@ -18,6 +18,15 @@ union semun
     struct seminfo *__buf;
 };
 
+// Usamos parte del listing 5.2 para este codigo
+/* Deallocate a binary semaphore.  All users must have finished their
+use.  Returns -1 on failure.  */
+int binary_semaphore_deallocate (int semid)
+{
+	union semun ignored_argument;
+	return semctl (semid, 1, IPC_RMID, ignored_argument);
+}
+
 /* Initialize a binary semaphore with a value of 1. */
 /* Inicializar un semáforo binario con un valor de 1. */
 int binary_semaphore_initialize(int semid)
