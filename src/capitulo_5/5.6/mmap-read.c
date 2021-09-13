@@ -12,7 +12,7 @@
 int main(int argc, char *const argv[])
 {
     int fd;
-    void *file_memory;
+    void* file_memory;
     int integer;
     /* Open the file. */
     /* Abre el archivo. */
@@ -24,7 +24,7 @@ int main(int argc, char *const argv[])
     close(fd);
     /* Read the integer, print it out, and double it. */
     /* Leer el entero, imprimirlo y duplicarlo. */
-    scanf(file_memory, "%d", &integer);
+    sscanf((char *)file_memory, "%d", &integer);
     printf("value: %d\n", integer);
     sprintf((char *)file_memory, "%d\n", 2 * integer);
     /* Release the memory (unnecessary because the program exits). */
