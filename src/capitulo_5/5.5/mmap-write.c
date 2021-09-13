@@ -29,7 +29,7 @@ int main(int argc, char *const argv[])
     /* Prepara un archivo lo suficientemente grande para contener un entero sin signo. */
     fd = open(argv[1], O_RDWR | O_CREAT, S_IRUSR | S_IWUSR);
     lseek(fd, FILE_LENGTH + 1, SEEK_SET);
-    write(fd, “”, 1);
+    write(fd, "", 1);
     lseek(fd, 0, SEEK_SET);
     /* Create the memory mapping. */
     /* Crea el mapeo de memoria. */
@@ -37,7 +37,7 @@ int main(int argc, char *const argv[])
     close(fd);
     /* Write a random integer to memory-mapped area. */
     /* Escribe un número entero aleatorio en el área asignada a la memoria. */
-    sprintf((char *)file_memory, “% d\n”, random_range(-100, 100));
+    sprintf((char *)file_memory, "%d\n", random_range(-100, 100));
     /* Release the memory (unnecessary because the program exits). */
     /* Liberar la memoria (innecesario porque el programa sale). */
     munmap(file_memory, FILE_LENGTH);
