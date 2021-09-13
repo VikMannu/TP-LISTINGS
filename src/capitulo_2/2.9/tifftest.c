@@ -6,7 +6,7 @@
 int main(int argc, char **argv)
 {
     TIFF *tiff;
-    tiff = TIFFOpen(argv[1], “r”);
+    tiff = TIFFOpen("TIFF.tiff", "r");
     TIFFClose(tiff);
     return 0;
 }
