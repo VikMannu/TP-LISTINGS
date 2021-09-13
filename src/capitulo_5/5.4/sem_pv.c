@@ -8,6 +8,24 @@
 
 #define KEY 0x1111
 
+// Usamos parte del listing 5.3 para este codigo
+union semun {
+	int val;
+	struct semid_ds *buf;
+	unsigned short int *array;
+	struct seminfo *__buf;
+};
+
+// Usamos parte del listing 5.3 para este codigo
+int binary_semaphore_initialize (int semid)
+{
+	union semun argument;
+	unsigned short values[1];
+	values[0] = 1;
+	argument.array = values;
+	return semctl (semid, 0, SETALL, argument);
+}
+
 /* Wait on a binary semaphore. Block until the semaphore value is positive, then 
 decrement it by 1. */
 /* Espera un semáforo binario. Bloquear hasta que el valor del semáforo 

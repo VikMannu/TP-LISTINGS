@@ -125,7 +125,7 @@ listing-1.3:
 	@echo "El listing-1.3 es un encabezado"
 
 #CAPITULO 2
-all-2: $(BIN-2.1) $(BIN-2.2) $(BIN-2.3) $(BIN-2.4) $(BIN-2.5) $(PROG-2.6) $(BIN-2.8) $(BIN-2.9)
+all-2: $(BIN-2.1) $(BIN-2.2) $(BIN-2.3) $(BIN-2.4) $(BIN-2.5) $(PROG-2.6)
 #2.1
 exec2.1:
 	./$(BIN-2.1) $(CFLAGS)
@@ -135,7 +135,6 @@ $(OBJ-2.1): $(SRC-2.1)
 	g++ -c $(SRC-2.1) -o $(OBJ-2.1)
 listing-2.1: $(SRC-2.1)
 	g++ -c $(SRC-2.1) -o $(OBJ-2.1)
-
 #2.2
 exec-2.2:
 	./$(BIN-2.2) $(CFLAGS)
@@ -145,7 +144,6 @@ $(OBJ-2.2): $(SRC-2.2)
 	g++ -c $(SRC-2.2) -o $(OBJ-2.2)
 listing-2.2: $(SRC-2.2)
 	g++ -c $(SRC-2.2) -o $(OBJ-2.2)
-
 #2.3
 exec-2.3:
 	./$(BIN-2.3) $(CFLAGS)
@@ -155,7 +153,6 @@ $(OBJ-2.3): $(SRC-2.3)
 	g++ -c $(SRC-2.3) -o $(OBJ-2.3)
 listing-2.3: $(SRC-2.3)
 	g++ -c $(SRC-2.3) -o $(OBJ-2.3)
-
 #2.4
 exec-2.4:
 	./$(BIN-2.4) $(CFLAGS)
@@ -165,7 +162,6 @@ $(OBJ-2.4): $(SRC-2.4)
 	g++ -c $(SRC-2.4) -o $(OBJ-2.4)
 listing-2.4: $(SRC-2.4)
 	g++ -c $(SRC-2.4) -o $(OBJ-2.4)
-
 #2.5
 exec-2.5:
 	./$(BIN-2.5) $(CFLAGS)
@@ -175,7 +171,6 @@ $(OBJ-2.5): $(SRC2-5)
 	g++ -c $(SRC2-5) -o $(OBJ-2.5)
 listing-2.5: $(SRC2-5)
 	g++ -c $(SRC2-5) -o $(OBJ-2.5)
-
 #2.6
 exec-2.6:
 	./$(PROG-2.6) $(CFLAGS)
@@ -187,33 +182,33 @@ listing-2.6: $(SRC-2.6)
 	g++ -c $(SRC-2.6) -o $(OBJ-2.6)
 
 #2.7&2.8
-exec-2.7:
-	@echo "No posee bin"
-exec-2.8:
-	./$(BIN-2.8) $(CFLAGS)
-$(BIN-2.8): $(LIBTEST)
-	g++ -o $(BIN-2.8) $(SRC-2.8) -L./$(LIBURL) -ltest
-	mv tifftest.o obj/capitulo_2/2.9/
-$(LIBTEST): $(OBJ-2.7)
-	ar cr $(LIBTEST) $(OBJ-2.7)
-	@echo "Se creó la libreria libtest.a"
-$(OBJ-2.7): $(SRC-2.7)
-	g++ -c $(SRC-2.7) -o $(OBJ-2.7)
-listing-2.7:
-	g++ -c $(SRC-2.7) -o $(OBJ-2.7)
-	ar cr $(LIBTEST) $(OBJ-2.7)
-	@echo "Se creó la libreria libtest.a"
-listing-2.8: listing-2.7
-	g++ -o $(BIN-2.8) $(SRC-2.8) -L./$(LIBURL) -ltest
-	mv tifftest.o obj/capitulo_2/2.9/
+#exec-2.7:
+#	@echo "No posee bin"
+#exec-2.8:
+#	./$(BIN-2.8) $(CFLAGS)
+#$(BIN-2.8): $(LIBTEST)
+#	g++ -o $(BIN-2.8) $(SRC-2.8) -L./$(LIBURL) -ltest
+#	mv tifftest.o obj/capitulo_2/2.9/
+#$(LIBTEST): $(OBJ-2.7)
+#	ar cr $(LIBTEST) $(OBJ-2.7)
+#	@echo "Se creó la libreria libtest.a"
+#$(OBJ-2.7): $(SRC-2.7)
+#	g++ -c $(SRC-2.7) -o $(OBJ-2.7)
+#listing-2.7:
+#	g++ -c $(SRC-2.7) -o $(OBJ-2.7)
+#	ar cr $(LIBTEST) $(OBJ-2.7)
+#	@echo "Se creó la libreria libtest.a"
+#listing-2.8: listing-2.7
+#	g++ -o $(BIN-2.8) $(SRC-2.8) -L./$(LIBURL) -ltest
+#	mv tifftest.o obj/capitulo_2/2.9/
 
 #2.9
-exec-2.9:
-	./$(BIN-2.9) $(CFLAGS)
-$(BIN-2.9): $(OBJ-2.9)
-	g++ -o $(BIN-2.9) $(SRC-2.9) –ltiff
-listing-2.9:
-	g++ -o $(BIN-2.9) $(SRC-2.9) –ltiff
+#exec-2.9:
+#	./$(BIN-2.9) $(CFLAGS)
+#$(BIN-2.9): $(OBJ-2.9)
+#	g++ -o $(BIN-2.9) $(SRC-2.9) –ltiff
+#listing-2.9:
+#	g++ -o $(BIN-2.9) $(SRC-2.9) –ltiff
 
 	
 #CAPITULO 3
@@ -224,7 +219,8 @@ all-4:
 
 
 #CAPITULO 5
-all-5: $(PROG-5.1) $(PROG-5.2)
+all-5: $(PROG-5.1) $(PROG-5.2) $(PROG-5.3) $(PROG-5.4) $(PROG-5.5) $(PROG-5.6) $(PROG-5.7) $(PROG-5.9) \
+		$(PROG-5.10) $(PROG-5.11) $(PROG-5.12)
 
 #5.1
 exec-5.1:
@@ -352,13 +348,13 @@ clean: clean-1 clean-2 clean-5
 
 #clean-capitulo_1
 clean-1:
-	rm -f $(BIN-1.1) $(OBJS1)
+	rm -f $(BIN-1.1) $(OBJS1) $(OBJ-1.1) $(OBJ-1.2)
 
 #clean-capitulo_2
 clean-2: clean-2.1 clean-2.2 clean-2.3 clean-2.4 clean-2.5 clean-2.6 clean-2.7_2.8 clean-2.9
 
 clean-2.1:
-	rm -f $(BIN-2.1) $(OBJ-2.1)
+	rm -f $(BIN-2.1) $(OBJ-2.1) 
 clean-2.2:
 	rm -f $(BIN-2.2) $(OBJ-2.2)
 clean-2.3:
