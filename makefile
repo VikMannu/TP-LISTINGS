@@ -219,8 +219,8 @@ all-4:
 
 
 #CAPITULO 5
-all-5: $(PROG-5.1) $(PROG-5.2) $(PROG-5.3) $(PROG-5.4) $(PROG-5.5) $(PROG-5.6) $(PROG-5.7) $(PROG-5.9) \
-		$(PROG-5.10) $(PROG-5.11) $(PROG-5.12)
+all-5: $(PROG-5.1) $(PROG-5.2) $(PROG-5.3) $(PROG-5.4) $(PROG-5.5) $(PROG-5.6) $(PROG-5.7) $(PROG-5.8) \
+		$(PROG-5.9) $(PROG-5.10) $(PROG-5.11) $(PROG-5.12)
 
 #5.1
 exec-5.1:
