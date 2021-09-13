@@ -3,6 +3,10 @@
 #include <sys/types.h>
 #include <sys/ipc.h>
 #include <sys/sem.h>
+#include <stdio.h>
+#include <sys/stat.h>
+
+#define KEY 0x1111
 
 /* We must define union semun ourselves. */
 /* Debemos definir union semun nosotros mismos. */

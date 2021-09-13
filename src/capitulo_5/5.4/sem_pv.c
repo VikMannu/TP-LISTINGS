@@ -2,7 +2,11 @@
 
 #include <sys/types.h>
 #include <sys/ipc.h>
+#include <sys/stat.h>
 #include <sys/sem.h>
+#include <stdio.h>
+
+#define KEY 0x1111
 
 /* Wait on a binary semaphore. Block until the semaphore value is positive, then 
 decrement it by 1. */
@@ -40,4 +44,17 @@ int binary_semaphore_post(int semid)
     /* Permitir deshacer. */
     operations[0].sem_flg = SEM_UNDO;
     return semop(semid, operations, 1);
+}
+
+int main(int argc, char*argv[])
+{
+	int semid = semget(KEY, 1, IPC_CREAT | S_IWUSR | S_IRUSR);
+	
+	int valor_semaforo = binary_semaphore_initialize(semid);
+	
+	int valor_retorno = binary_semaphore_post(semid);
+	
+	printf("Valor del semaforo: %d\n", valor_semaforo);
+	
+	return 0;
 }
