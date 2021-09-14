@@ -14,7 +14,6 @@ struct job
 };
 
 void process_job(struct job* job_x);
-void process_job(struct job* job_x);
 
 /* A linked list of pending jobs. */
 /* Una lista vinculada de trabajos pendientes. */
