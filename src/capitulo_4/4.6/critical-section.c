@@ -38,7 +38,7 @@ int process_transaction(int from_acct, int to_acct, float dollars)
 int main()
 {
 
-	account_balances = malloc(sizeof(float)*5);
+	account_balances = (float*) malloc(sizeof(float)*5);
 	for(int i = 0; i < 5; i++) {
 		account_balances[i] = 10000;
 	}

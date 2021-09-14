@@ -42,7 +42,7 @@ int main()
 {
 	pthread_t thread;
 	int which_prime = 5000;
-	int prime;
+	void * prime;
 
 	/* Start the computing thread, up to the 5,000th prime number. */
 	/* Inicie el subproceso de cálculo, hasta el número 5.000 primo. */
@@ -52,10 +52,10 @@ int main()
 	/* Wait for the prime number thread to complete, and get the result. */
 	/* Haz algún otro trabajo aquí ... */
 	/* Espere a que se complete el hilo de números primos y obtenga el resultado. */
-	pthread_join(thread, (void*) &prime);
+	pthread_join(thread, &prime);
 
 	/* Print the largest prime it computed. */
 	/* Imprime el primo más grande que calculó. */
-	printf("The %dth prime number is % d.\n", which_prime, prime);
+	printf("The %dth prime number is %d.\n", which_prime, (int *) prime);
 	return 0;
 }
