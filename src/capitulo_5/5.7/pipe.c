@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <sys/types.h>
 
 /* Write COUNT copies of MESSAGE to STREAM, pausing for a second
 between each. */
