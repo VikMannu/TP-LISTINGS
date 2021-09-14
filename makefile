@@ -598,38 +598,35 @@ $(OBJ-5.9): $(SRC-5.9)
 listing-5.9: $(OBJ-5.9)
 	g++ -o $(BIN-5.9) $(OBJ-5.9)
 #5.10
-#exec-5.10:
-#	./$(BIN-5.10) $(CFLAGS)
-#$(BIN-5.10): $(OBJ-5.10)
-#	g++ -o $(BIN-5.10) $(OBJ-5.10)
-#$(OBJ-5.10): $(SRC-5.10)
-#	g++ -c $(SRC-5.10) -o $(OBJ-5.10)
-#listing-5.10: $(OBJ-5.10)
-#	g++ -o $(BIN-5.10) $(OBJ-5.10)
+exec-5.10:
+	./$(BIN-5.10) $(CFLAGS)
+$(BIN-5.10): $(OBJ-5.10)
+	gcc -o $(BIN-5.10) $(OBJ-5.10)
+$(OBJ-5.10): $(SRC-5.10)
+	gcc -c $(SRC-5.10) -o $(OBJ-5.10)
+listing-5.10: $(OBJ-5.10)
+	gcc -o $(BIN-5.10) $(OBJ-5.10)
+	@echo "Yo compilaba con g++, y tenia que ser para estos listing gcc por compatibilidad de librería"
 #5.11
-#exec-5.11:
-#	./$(BIN-5.11) $(CFLAGS)
-#$(BIN-5.11): $(OBJ-5.11)
-#	g++ -o $(BIN-5.11) $(OBJ-5.11)
-#$(OBJ-5.11): $(SRC-5.11)
-#	g++ -c $(SRC-5.11) -o $(OBJ-5.11)
-#listing-5.11: $(OBJ-5.11)
-#	g++ -o $(BIN-5.11) $(OBJ-5.11)
+exec-5.11:
+	./$(BIN-5.11) $(CFLAGS)
+$(BIN-5.11): $(OBJ-5.11)
+	gcc -o $(BIN-5.11) $(OBJ-5.11)
+$(OBJ-5.11): $(SRC-5.11)
+	gcc -c $(SRC-5.11) -o $(OBJ-5.11)
+listing-5.11: $(OBJ-5.11)
+	gcc -o $(BIN-5.11) $(OBJ-5.11)
+	@echo "Yo compilaba con g++, y tenia que ser para estos listing gcc por compatibilidad de librería"
 #5.12
-#exec-5.12:
-#	./$(BIN-5.12) $(CFLAGS)
-#$(BIN-5.12): $(OBJ-5.12)
-#	g++ -o $(BIN-5.12) $(OBJ-5.12)
-#$(OBJ-5.12): $(SRC-5.12)
-#	g++ -c $(SRC-5.12) -o $(OBJ-5.12)
-#listing-5.12: $(OBJ-5.12)
-#	g++ -o $(BIN-5.12) $(OBJ-5.12)
-listing-5.10:
-	@echo "Me daba un error de compilación por un struct que nunca entendí el porqué"
-listing-5.11:
-	@echo "Me daba un error de compilación por un struct que nunca entendí el porqué"
-listing-5.12:
-	@echo "Me daba un error de compilación por un struct que nunca entendí el porqué"
+exec-5.12:
+	./$(BIN-5.12) $(CFLAGS)
+$(BIN-5.12): $(OBJ-5.12)
+	gcc -o $(BIN-5.12) $(OBJ-5.12)
+$(OBJ-5.12): $(SRC-5.12)
+	gcc -c $(SRC-5.12) -o $(OBJ-5.12)
+listing-5.12: $(OBJ-5.12)
+	gcc -o $(BIN-5.12) $(OBJ-5.12)
+	@echo "Yo compilaba con g++, y tenia que ser para estos listing gcc por compatibilidad de librería"
 
 #clean
 clean: clean-1 clean-2 clean-3 clean-4 clean-5
