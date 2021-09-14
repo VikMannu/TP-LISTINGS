@@ -10,6 +10,6 @@
 ## Instrucciones
 Para la ejecución del los listings escribir:
   ```make exec-X.Y CFLAGS=```
-donde 
-X: capítulo.
-Y: ejercicio ejemplo.
+ donde 
+ X: capítulo.
+ Y: ejercicio ejemplo.
