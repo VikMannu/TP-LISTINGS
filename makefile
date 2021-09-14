@@ -522,7 +522,6 @@ $(OBJ-5.1): $(SRC-5.1)
 	g++ -c $(SRC-5.1) -o $(OBJ-5.1)
 listing-5.1: $(OBJ-5.1)
 	g++ -o $(BIN-5.1) $(OBJ-5.1)
-
 #5.2
 exec-5.2:
 	./$(BIN-5.2) $(CFLAGS)
@@ -542,7 +541,6 @@ $(OBJ-5.3): $(SRC-5.3)
 	g++ -c $(SRC-5.3) -o $(OBJ-5.3)
 listing-5.3: $(OBJ-5.3)
 	g++ -o $(BIN-5.3) $(OBJ-5.3)
-
 #5.4
 exec-5.4:
 	./$(BIN-5.4) $(CFLAGS)
@@ -552,7 +550,6 @@ $(OBJ-5.4): $(SRC-5.4)
 	g++ -c $(SRC-5.4) -o $(OBJ-5.4)
 listing-5.4: $(OBJ-5.4)
 	g++ -o $(BIN-5.4) $(OBJ-5.4)
-
 #5.5
 exec-5.5:
 	./$(BIN-5.5) prueba
@@ -562,7 +559,6 @@ $(OBJ-5.5): $(SRC-5.5)
 	g++ -c $(SRC-5.5) -o $(OBJ-5.5)
 listing-5.5: $(OBJ-5.5)
 	g++ -o $(BIN-5.5) $(OBJ-5.5)
-
 #5.6
 exec-5.6:
 	./$(BIN-5.6) prueba
@@ -573,7 +569,6 @@ $(OBJ-5.6): $(SRC-5.6)
 	g++ -c $(SRC-5.6) -o $(OBJ-5.6)
 listing-5.6: $(OBJ-5.6)
 	g++ -o $(BIN-5.6) $(OBJ-5.6)
-
 #5.7
 exec-5.7:
 	./$(BIN-5.7) $(CFLAGS)
@@ -583,7 +578,6 @@ $(OBJ-5.7): $(SRC-5.7)
 	g++ -c $(SRC-5.7) -o $(OBJ-5.7)
 listing-5.7: $(OBJ-5.7)
 	g++ -o $(BIN-5.7) $(OBJ-5.7)
-
 #5.8
 exec-5.8:
 	./$(BIN-5.8) $(CFLAGS)
@@ -603,36 +597,39 @@ $(OBJ-5.9): $(SRC-5.9)
 	g++ -c $(SRC-5.9) -o $(OBJ-5.9)
 listing-5.9: $(OBJ-5.9)
 	g++ -o $(BIN-5.9) $(OBJ-5.9)
-
 #5.10
-exec-5.10:
-	./$(BIN-5.10) $(CFLAGS)
-$(BIN-5.10): $(OBJ-5.10)
-	g++ -o $(BIN-5.10) $(OBJ-5.10)
-$(OBJ-5.10): $(SRC-5.10)
-	g++ -c $(SRC-5.10) -o $(OBJ-5.10)
-listing-5.10: $(OBJ-5.10)
-	g++ -o $(BIN-5.10) $(OBJ-5.10)
-
+#exec-5.10:
+#	./$(BIN-5.10) $(CFLAGS)
+#$(BIN-5.10): $(OBJ-5.10)
+#	g++ -o $(BIN-5.10) $(OBJ-5.10)
+#$(OBJ-5.10): $(SRC-5.10)
+#	g++ -c $(SRC-5.10) -o $(OBJ-5.10)
+#listing-5.10: $(OBJ-5.10)
+#	g++ -o $(BIN-5.10) $(OBJ-5.10)
 #5.11
-exec-5.11:
-	./$(BIN-5.11) $(CFLAGS)
-$(BIN-5.11): $(OBJ-5.11)
-	g++ -o $(BIN-5.11) $(OBJ-5.11)
-$(OBJ-5.11): $(SRC-5.11)
-	g++ -c $(SRC-5.11) -o $(OBJ-5.11)
-listing-5.11: $(OBJ-5.11)
-	g++ -o $(BIN-5.11) $(OBJ-5.11)
+#exec-5.11:
+#	./$(BIN-5.11) $(CFLAGS)
+#$(BIN-5.11): $(OBJ-5.11)
+#	g++ -o $(BIN-5.11) $(OBJ-5.11)
+#$(OBJ-5.11): $(SRC-5.11)
+#	g++ -c $(SRC-5.11) -o $(OBJ-5.11)
+#listing-5.11: $(OBJ-5.11)
+#	g++ -o $(BIN-5.11) $(OBJ-5.11)
 #5.12
-exec-5.12:
-	./$(BIN-5.12) $(CFLAGS)
-$(BIN-5.12): $(OBJ-5.12)
-	g++ -o $(BIN-5.12) $(OBJ-5.12)
-$(OBJ-5.12): $(SRC-5.12)
-	g++ -c $(SRC-5.12) -o $(OBJ-5.12)
-listing-5.12: $(OBJ-5.12)
-	g++ -o $(BIN-5.12) $(OBJ-5.12)
-
+#exec-5.12:
+#	./$(BIN-5.12) $(CFLAGS)
+#$(BIN-5.12): $(OBJ-5.12)
+#	g++ -o $(BIN-5.12) $(OBJ-5.12)
+#$(OBJ-5.12): $(SRC-5.12)
+#	g++ -c $(SRC-5.12) -o $(OBJ-5.12)
+#listing-5.12: $(OBJ-5.12)
+#	g++ -o $(BIN-5.12) $(OBJ-5.12)
+listing-5.10:
+	@echo "Me daba un error de compilación por un struct que nunca entendí el porqué"
+listing-5.11:
+	@echo "Me daba un error de compilación por un struct que nunca entendí el porqué"
+listing-5.12:
+	@echo "Me daba un error de compilación por un struct que nunca entendí el porqué"
 
 #clean
 clean: clean-1 clean-2 clean-3 clean-4 clean-5
