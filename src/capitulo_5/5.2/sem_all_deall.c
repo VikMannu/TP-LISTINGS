@@ -35,15 +35,15 @@ int binary_semaphore_deallocate(int semid)
 
 int main (int argc, char *argv[]) {
     printf("\n Obtener un ID de semáforo binario, asignando si es necesario.");
-    int semid = binary_semaphore_allocation(KEY, IPC_CREAT);
+    int sem_id = binary_semaphore_allocation(KEY, IPC_CREAT);
 	
-	printf("\nValor de semid:%d", semid);
+	printf("\n Valor de semid:%d", sem_id);
 	
-    printf("\nDesasignar un semáforo binario."
-           "\nTodos los usuarios deben haber terminado su uso. Devuelve -1 en caso de fallo.");
-	binary_semaphore_deallocate(semid);
+    printf("\n Desasignar un semáforo binario."
+           "\n Todos los usuarios deben haber terminado su uso. Devuelve -1 en caso de fallo.");
+	binary_semaphore_deallocate(sem_id);
 	
-	printf("\nSemaforo binario desalojado\n");
+	printf("\n Semaforo binario desalojado\n");
 	
 	return 0;
 }

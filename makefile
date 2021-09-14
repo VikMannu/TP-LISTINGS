@@ -42,6 +42,7 @@ SRC-2.8 = src/capitulo_2/2.7_2.8/app.c
 LIBTEST = obj/capitulo_2/2.7_2.8/libtest.a
 LIBURL = obj/capitulo_2/2.7_2.8
 #2.9
+#No utilice las variables porque por alguna razón daba un error
 BIN-2.9 = bin/capitulo_2/2.9/tifftest
 OBJ-2.9 = obj/capitulo_2/2.9/tifftest.o
 SRC-2.9 = src/capitulo_2/2.9/tifftest.c
@@ -125,7 +126,7 @@ listing-1.3:
 	@echo "El listing-1.3 es un encabezado"
 
 #CAPITULO 2
-all-2: $(BIN-2.1) $(BIN-2.2) $(BIN-2.3) $(BIN-2.4) $(BIN-2.5) $(PROG-2.6)
+all-2: $(BIN-2.1) $(BIN-2.2) $(BIN-2.3) $(BIN-2.4) $(BIN-2.5) $(BIN-2.6) $(BIN-2.8) $(BIN-2.9)
 #2.1
 exec2.1:
 	./$(BIN-2.1) $(CFLAGS)
@@ -182,33 +183,35 @@ listing-2.6: $(SRC-2.6)
 	g++ -c $(SRC-2.6) -o $(OBJ-2.6)
 
 #2.7&2.8
-#exec-2.7:
-#	@echo "No posee bin"
-#exec-2.8:
-#	./$(BIN-2.8) $(CFLAGS)
-#$(BIN-2.8): $(LIBTEST)
+exec-2.7:
+	@echo "No posee bin"
+exec-2.8:
+	./$(BIN-2.8) $(CFLAGS)
+$(BIN-2.8): $(LIBTEST)
+	g++ -o $(BIN-2.8) $(SRC-2.8) -L./$(LIBURL) -ltest
+	mv tifftest.o obj/capitulo_2/2.9/
+$(LIBTEST): $(OBJ-2.7)
+	ar cr $(LIBTEST) $(OBJ-2.7)
+	@echo "Se creó la libreria libtest.a"
+$(OBJ-2.7): $(SRC-2.7)
+	g++ -c $(SRC-2.7) -o $(OBJ-2.7)
+listing-2.7:
+	g++ -c $(SRC-2.7) -o $(OBJ-2.7)
+	ar cr $(LIBTEST) $(OBJ-2.7)
+	@echo "Se creó la libreria libtest.a"
+listing-2.8: $(LIBTEST)
 #	g++ -o $(BIN-2.8) $(SRC-2.8) -L./$(LIBURL) -ltest
 #	mv tifftest.o obj/capitulo_2/2.9/
-#$(LIBTEST): $(OBJ-2.7)
-#	ar cr $(LIBTEST) $(OBJ-2.7)
-#	@echo "Se creó la libreria libtest.a"
-#$(OBJ-2.7): $(SRC-2.7)
-#	g++ -c $(SRC-2.7) -o $(OBJ-2.7)
-#listing-2.7:
-#	g++ -c $(SRC-2.7) -o $(OBJ-2.7)
-#	ar cr $(LIBTEST) $(OBJ-2.7)
-#	@echo "Se creó la libreria libtest.a"
-#listing-2.8: listing-2.7
-#	g++ -o $(BIN-2.8) $(SRC-2.8) -L./$(LIBURL) -ltest
-#	mv tifftest.o obj/capitulo_2/2.9/
+# solo con @echo me funcionó cuando probé en mi computadora
+	@echo "g++ -o bin/capitulo_2/2.7_2.8/app src/capitulo_2/2.7_2.8/app.c -L./obj/capitulo_2/2.7_2.8 -ltest"
 
 #2.9
-#exec-2.9:
-#	./$(BIN-2.9) $(CFLAGS)
-#$(BIN-2.9): $(OBJ-2.9)
-#	g++ -o $(BIN-2.9) $(SRC-2.9) –ltiff
-#listing-2.9:
-#	g++ -o $(BIN-2.9) $(SRC-2.9) –ltiff
+exec-2.9:
+	./$(BIN-2.9) $(CFLAGS)
+$(BIN-2.9):
+	g++ -o bin/capitulo_2/2.9/tifftest src/capitulo_2/2.9/tifftest.c -ltiff
+listing-2.9:
+	g++ -o bin/capitulo_2/2.9/tifftest src/capitulo_2/2.9/tifftest.c -ltiff
 
 	
 #CAPITULO 3
@@ -264,7 +267,7 @@ listing-5.4: $(SRC-5.4)
 
 #5.5
 exec-5.5:
-	./$(PROG-5.5) $(CFLAGS)
+	./$(PROG-5.5) prueba
 $(PROG-5.5): $(OBJ-5.5)
 	g++ -o $(PROG-5.5) $(OBJ-5.5)
 $(OBJ-5.5): $(SRC-5.5)
@@ -274,7 +277,8 @@ listing-5.5: $(SRC-5.5)
 
 #5.6
 exec-5.6:
-	./$(PROG-5.6) $(CFLAGS)
+	./$(PROG-5.6) prueba
+	rm -f prueba
 $(PROG-5.6): $(OBJ-5.6)
 	g++ -o $(PROG-5.6) $(OBJ-5.6)
 $(OBJ-5.6): $(SRC-5.6)

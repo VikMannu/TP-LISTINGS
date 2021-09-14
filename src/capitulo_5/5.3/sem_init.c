@@ -18,14 +18,23 @@ union semun
     struct seminfo *__buf;
 };
 
-// Usamos parte del listing 5.2 para este codigo
-/* Deallocate a binary semaphore.  All users must have finished their
-use.  Returns -1 on failure.  */
-int binary_semaphore_deallocate (int semid)
+/* Obtain a binary semaphore’s ID, allocating if necessary. */
+/* Obtener un ID de semáforo binario, asignando si es necesario. */
+int binary_semaphore_allocation(key_t key, int sem_flags)
 {
-	union semun ignored_argument;
-	return semctl (semid, 1, IPC_RMID, ignored_argument);
+    return semget(key, 1, sem_flags);
 }
+
+/* Deallocate a binary semaphore. All users must have finished their
+use. Returns -1 on failure. */
+/* Desasignar un semáforo binario. Todos los usuarios deben haber 
+terminado su uso. Devuelve -1 en caso de fallo. */
+int binary_semaphore_deallocate(int semid)
+{
+    union semun ignored_argument;
+    return semctl(semid, 1, IPC_RMID, ignored_argument);
+}
+
 
 /* Initialize a binary semaphore with a value of 1. */
 /* Inicializar un semáforo binario con un valor de 1. */
@@ -41,18 +50,17 @@ int binary_semaphore_initialize(int semid)
 int main (int argc, char* argv[])
 {
 	// Primero debemos alojar espacio para el semaforo 
-	int id_semaforo = semget(KEY, 1, IPC_CREAT | S_IWUSR | S_IRUSR);
+	int sem_id = semget(KEY, 1, IPC_CREAT | S_IWUSR | S_IRUSR);
 	
-	printf("Valor del id del semaforo: %d\n", id_semaforo);
+	printf(" Valor del id del semaforo: %d\n", sem_id);
 	
-	int valor_semaforo = binary_semaphore_initialize(id_semaforo);
+	int value_sem = binary_semaphore_initialize(sem_id);
 	
-	printf("Valor retornado por la funcion semctl: %d\n", valor_semaforo);
-	printf("Este valor significa que se inicializo exitosamente el semaforo\n");
+	printf(" Valor retornado por la funcion semctl: %d\n", value_sem);
+	printf(" Este valor significa que se inicializo exitosamente el semaforo\n");
 	
-	int estado = binary_semaphore_deallocate(id_semaforo);
-	
-	printf("Semaforo binario desalojado\n");
+	int estado = binary_semaphore_deallocate(sem_id);
+	printf(" Semaforo binario desalojado\n");
 	
 	return 0;
 }

@@ -19,7 +19,7 @@ union semun {
 // Usamos parte del listing 5.3 para este codigo
 int binary_semaphore_initialize (int semid)
 {
-	union semun argument;
+    union semun argument;
 	unsigned short values[1];
 	values[0] = 1;
 	argument.array = values;
@@ -64,15 +64,36 @@ int binary_semaphore_post(int semid)
     return semop(semid, operations, 1);
 }
 
+/* Obtain a binary semaphore’s ID, allocating if necessary. */
+/* Obtener un ID de semáforo binario, asignando si es necesario. */
+int binary_semaphore_allocation(key_t key, int sem_flags)
+{
+    return semget(key, 1, sem_flags);
+}
+
+/* Deallocate a binary semaphore. All users must have finished their
+use. Returns -1 on failure. */
+/* Desasignar un semáforo binario. Todos los usuarios deben haber 
+terminado su uso. Devuelve -1 en caso de fallo. */
+int binary_semaphore_deallocate(int semid)
+{
+    union semun ignored_argument;
+    return semctl(semid, 1, IPC_RMID, ignored_argument);
+}
+
 int main(int argc, char*argv[])
 {
-	int semid = semget(KEY, 1, IPC_CREAT | S_IWUSR | S_IRUSR);
+    int sem_id = binary_semaphore_allocation(KEY, IPC_CREAT);
+    printf("\n Se alojo un semáforo y su sem_id es: %d", sem_id);
 	
-	int valor_semaforo = binary_semaphore_initialize(semid);
+	int valor_semaforo = binary_semaphore_initialize(sem_id);
 	
-	int valor_retorno = binary_semaphore_post(semid);
+	int valor_retorno = binary_semaphore_post(sem_id);
 	
-	printf("Valor del semaforo: %d\n", valor_semaforo);
+	printf("\n Valor del semaforo: %d\n", valor_semaforo);
+
+    int estado = binary_semaphore_deallocate(sem_id);
+	printf("\n Semaforo binario desalojado y su estado es: \n", estado);
 	
 	return 0;
 }
